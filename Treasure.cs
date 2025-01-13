@@ -10,36 +10,36 @@ namespace CacaTesouro
     {
         public int[,] Coordinates { get; set; }
 
-         public Treasure(int startX, int startY)
+        public string Name => "Treasure";
+        public char Symbol => 'G';
+
+        public ConsoleColor Color => ConsoleColor.DarkYellow;
+
+        public Treasure(int startX, int startY)
         {
             Coordinates = new int[1, 2];
             Coordinates[0, 0] = startX;
             Coordinates[0, 1] = startY;
+
         }
 
-        public int[,] Move(int MatrixWidthX, int MatrixWeigthY)
+        public static int[,] Print(int matrixWidthX, int matrixWeightY)
         {
             Random random = new Random();
 
             Treasure treasure = new Treasure(0, 0);
+            treasure.Coordinates = new int[1, 2];
 
-            int moveX = random.Next(1, MatrixWidthX - 1);
-            int moveY = random.Next(1, MatrixWeigthY - 1);
-
-            treasure.Coordinates[0, 0] = moveX;
-            treasure.Coordinates[0, 1] = moveY;
-
-            int newX = Math.Max(1, Math.Min(treasure.Coordinates[0, 0], MatrixWidthX - 2)); 
-            int newY = Math.Max(1, Math.Min(treasure.Coordinates[0, 1], MatrixWeigthY - 2));
-
-            treasure.Coordinates[0, 0] = newX;
-            treasure.Coordinates[0, 1] = newY;
-
+            do
+            {
+                treasure.Coordinates[0, 0] = random.Next(1, matrixWidthX - 1);
+                treasure.Coordinates[0, 1] = random.Next(1, matrixWeightY - 1); 
+            }
+            while (treasure.Coordinates[0, 0] == 0 || treasure.Coordinates[0, 0] == matrixWidthX - 1 ||
+                   treasure.Coordinates[0, 1] == 0 || treasure.Coordinates[0, 1] == matrixWeightY - 1);
 
             return treasure.Coordinates;
         }
-
-
 
     }
 }

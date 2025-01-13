@@ -9,7 +9,7 @@ namespace CacaTesouro.Utils
 {
     internal class Utils
     {
-        public static int[,] StartPosition( IElements vehicle,int MatrixWidthX, int MatrixWeigthY)
+        public static int[,] StartPosition( IVehicles vehicle,int MatrixWidthX, int MatrixWeigthY)
         {
 
             Random random = new Random();

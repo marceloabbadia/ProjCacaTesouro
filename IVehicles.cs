@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace CacaTesouro
 {
-    public interface IElements
+    public interface IVehicles
     {
         public int[,] Coordinates { get; set; }
 
+        public int[,] Move(int coordinatesX, int coordinatesY, int vehicle1X, int vehicle1Y, int vehicle2X, int vehicle2Y);
 
     }
 }
